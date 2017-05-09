@@ -1,0 +1,4 @@
+---
+# vars file for splunk
+splunk_tgz: '{{splunk_fprefix}}-{{splunk_version}}-{{splunk_sha}}-{{splunk_platform}}-{{splunk_architecture}}'
+splunk_tgz_url: '{{splunk_mirror}}?architecture={{splunk_architecture}}&platform={{splunk_platform}}&version={{splunk_version}}&product={{splunk_product}}&filename={{splunk_tgz}}&wget=true'

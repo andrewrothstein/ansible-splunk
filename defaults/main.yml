@@ -1,0 +1,9 @@
+---
+# defaults file for splunk
+splunk_architecture: x86_64
+splunk_platform: Linux
+splunk_version: '6.6.0'
+splunk_sha: 1c4f3bbe1aea
+splunk_product: splunk_light
+splunk_fprefix: splunklight
+splunk_mirror: https://www.splunk.com/bin/splunk/DownloadActivityServlet
