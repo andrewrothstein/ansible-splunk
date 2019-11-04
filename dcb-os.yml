@@ -3,6 +3,7 @@
 - alpine_3.5
 - alpine_edge
 - centos_7
+- centos_8
 - debian_jessie
 - fedora_23
 - fedora_24
