@@ -9,3 +9,7 @@ splunk_sha: 6db836e2fb9e
 splunk_product: splunk
 
 splunk_parent_install_dir: /usr/local
+
+splunk_checksums:
+  # https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=Linux&version=8.0.1&product=splunk&filename=splunk-8.0.1-6db836e2fb9e-Linux-x86_64.tgz&wget=true
+  '8.0.1': sha256:d4c7911dc0609ee9042097efd8c4ae368689f8a4f0d24e3697d6f4b582af987c

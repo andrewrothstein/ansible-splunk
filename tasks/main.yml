@@ -30,6 +30,7 @@
       get_url:
         url: '{{ splunk_url }}'
         dest: /tmp/{{ splunk_tgz }}
+        checksum: '{{ splunk_checksum }}'
         mode: 0644
     - name: unarchive...
       become: yes
