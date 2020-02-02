@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Andrew Rothstein
-  description: '@TODO name this role'
+  description: installs splunk
   company: BlackRock
   license:
     - MIT
@@ -21,6 +21,8 @@ galaxy_info:
         - all
   galaxy_tags:
     - development
+  role_name: splunk
 
-dependencies: []
-  
+dependencies:
+  - role: andrewrothstein.unarchive-deps
+    version: v1.1.2

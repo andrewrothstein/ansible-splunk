@@ -1,4 +1,10 @@
 ---
 # vars file for splunk
-splunk_tgz: '{{splunk_fprefix}}-{{splunk_version}}-{{splunk_sha}}-{{splunk_platform}}-{{splunk_architecture}}'
-splunk_tgz_url: '{{splunk_mirror}}?architecture={{splunk_architecture}}&platform={{splunk_platform}}&version={{splunk_version}}&product={{splunk_product}}&filename={{splunk_tgz}}&wget=true'
+
+# splunk-8.0.1-6db836e2fb9e-Linux-x86_64.tgz
+splunk_tgz: splunk-{{ splunk_ver }}-{{ splunk_sha }}-{{ splunk_platform }}-{{ splunk_architecture }}.tgz
+
+# https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.0.1&product=splunk&filename=splunk-8.0.1-6db836e2fb9e-Linux-x86_64.tgz&wget=true
+splunk_url: '{{ splunk_mirror }}?architecture={{ splunk_architecture }}&platform={{ splunk_platform }}&version={{ splunk_ver }}&product={{ splunk_product }}&filename={{ splunk_tgz }}&wget=true'
+
+splunk_install_dir: '{{ splunk_parent_install_dir }}/splunk-{{ splunk_ver }}'

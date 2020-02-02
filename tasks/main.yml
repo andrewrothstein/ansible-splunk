@@ -9,3 +9,57 @@
       skip: true
       paths:
         - '{{role_path}}/vars'
+- name: look for splunk install...
+  become: yes
+  stat:
+    path: '{{ splunk_install_dir }}'
+  changed_when: False
+  register: splunk_binary
+- when: not splunk_binary.stat.exists
+  block:
+    - name: mkdir {{ splunk_install_dir }}
+      become: yes
+      become_user: root
+      file:
+        path: '{{ splunk_install_dir }}'
+        state: directory
+        mode: 0755
+    - name: download...
+      become: yes
+      become_user: root
+      get_url:
+        url: '{{ splunk_url }}'
+        dest: /tmp/{{ splunk_tgz }}
+        mode: 0644
+    - name: unarchive...
+      become: yes
+      become_user: root
+      unarchive:
+        remote_src: yes
+        src: /tmp/{{ splunk_tgz }}
+        dest: '{{ splunk_install_dir }}'
+        creates: '{{ splunk_install_dir }}/splunk'
+  always:
+    - name: cleanup
+      become: yes
+      become_user: root
+      file:
+        path: /tmp/{{ splunk_tgz }}
+        state: absent
+- name: link
+  become: yes
+  become_user: root
+  file:
+    src: '{{ splunk_install_dir }}/splunk'
+    dest: '{{ splunk_parent_install_dir }}/splunk'
+    state: link
+- name: add splunk binaries to default shell
+  become: yes
+  become_user: root
+  with_items:
+    - f: splunk.sh
+      d: /etc/profile.d
+  template:
+    src: '{{ item.f }}.j2'
+    dest: '{{ item.d }}/{{ item.f }}'
+    mode: '{{ item.m | default("0644") }}'
