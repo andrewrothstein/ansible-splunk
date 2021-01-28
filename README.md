@@ -1,8 +1,8 @@
-[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-rolename.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-rolename)
-andrewrothstein.rolename
+[![CircleCI](https://circleci.com/gh/andrewrothstein/ansible-splunk.svg?style=svg)](https://circleci.com/gh/andrewrothstein/ansible-splunk)
+andrewrothstein.splunk
 =========
 
-A brief description of the andrewrothstein.rolename goes here.
+A brief description of the andrewrothstein.splunk goes here.
 
 Requirements
 ------------
@@ -25,7 +25,7 @@ Example Playbook
 ```yml
 - hosts: servers
   roles:
-    - andrewrothstein.rolename
+    - andrewrothstein.splunk
 ```
 
 License
