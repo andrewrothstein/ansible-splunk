@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+set -e
 DIR=~/Downloads
 MIRROR=https://www.splunk.com/bin/splunk/DownloadActivityServlet
 
@@ -20,4 +21,6 @@ dl_ver() {
     printf "  '%s': sha256:%s\n" $ver $(sha256sum $lfile | awk '{print $1}')
 }
 
-dl_ver 8.0.1 6db836e2fb9e Linux x86_64
+# https://www.splunk.com/bin/splunk/DownloadActivityServlet?architecture=x86_64&platform=linux&version=8.1.1&product=splunk&filename=splunk-8.1.1-08187535c166-Linux-x86_64.tgz&wget=true
+dl_ver 8.1.1 08187535c166 Linux x86_64
+
