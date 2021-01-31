@@ -2,6 +2,7 @@
 # vars file for splunk
 
 splunk_tgz: splunk-{{ splunk_ver }}-{{ splunk_sha }}-{{ splunk_platform }}-{{ splunk_architecture }}.tgz
+splunk_tmp_tgz: /tmp/{{ splunk_tgz }}
 
 splunk_url: '{{ splunk_mirror }}?architecture={{ splunk_architecture }}&platform={{ splunk_platform }}&version={{ splunk_ver }}&product={{ splunk_product }}&filename={{ splunk_tgz }}&wget=true'
 

@@ -9,7 +9,7 @@
       skip: true
       paths:
         - '{{ role_path }}/vars'
-- name: look for splunk install...
+- name: look for install in {{ splunk_install_dir }}
   become: yes
   stat:
     path: '{{ splunk_install_dir }}'
@@ -24,28 +24,28 @@
         path: '{{ splunk_install_dir }}'
         state: directory
         mode: 0755
-    - name: download...
+    - name: downloading {{ splunk_url }}...
       become: yes
       become_user: root
       get_url:
         url: '{{ splunk_url }}'
-        dest: /tmp/{{ splunk_tgz }}
+        dest: '{{ splunk_tmp_tgz }}'
         checksum: '{{ splunk_checksum }}'
         mode: 0644
-    - name: unarchive...
+    - name: unarchiving {{ splunk_tmp_tgz }} to {{ splunk_install_dir }}
       become: yes
       become_user: root
       unarchive:
         remote_src: yes
-        src: /tmp/{{ splunk_tgz }}
+        src: '{{ splunk_tmp_tgz }}'
         dest: '{{ splunk_install_dir }}'
         creates: '{{ splunk_install_dir }}/splunk'
   always:
-    - name: cleanup
+    - name: rm {{ splunk_tmp_tgz }}
       become: yes
       become_user: root
       file:
-        path: /tmp/{{ splunk_tgz }}
+        path: '{{ splunk_tmp_tgz }}'
         state: absent
 - name: link
   become: yes
